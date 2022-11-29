@@ -1,4 +1,7 @@
+<h2>Follow Users</h2>
 <% if @users.empty? %>
+  <p>ユーザーはいません</p>
+<% else %>
   <% @users.each do |user| %>
     <table class='table'>
       <thead>
@@ -21,6 +24,4 @@
       </tbody>
     </table>
   <% end %>
-<% else %>
-  <p>ユーザーはいません</p>
 <% end %>
