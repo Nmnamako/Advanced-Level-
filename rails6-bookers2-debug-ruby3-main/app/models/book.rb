@@ -4,6 +4,9 @@ class Book < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :book_comments, dependent: :destroy
   
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day) } # 今日
+  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) } # 前日
+  
   def self.looks(search, word)
     if search == "perfect_match"
       @book = Book.where("title LIKE?", "#{word}")
@@ -17,7 +20,6 @@ class Book < ApplicationRecord
       @book = Book.all
     end
   end
-  
   
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
