@@ -17,6 +17,11 @@ import "../stylesheets/application"
 
 require('jquery')
 
+require("chartkick") // グラフ関係
+require("chart.js") // グラフ関係
+
+
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()

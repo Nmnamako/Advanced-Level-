@@ -46,7 +46,67 @@
             </tr>
           </tbody>
         </table>
+        
+        <!--グラフの追加-->
+        <table class="table">
+          <thead>
+            <tr>
+              <th class="border">6日目</th>
+              <th class="border">5日目</th>
+              <th class="border">4日目</th>
+              <th class="border">3日目</th>
+              <th class="border">2日目</th>
+              <th class="border">1日目</th>
+              <th class="border">今日</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border"><%= @six_days_ago_book.count %></td> <!--6日目-->
+              <td class="border"><%= @five_days_ago_book.count %></td> <!--5日目-->
+              <td class="border"><%= @four_days_ago_book.count %></td> <!--4日目-->
+              <td class="border"><%= @three_days_ago_book.count %></td> <!--3日目-->
+              <td class="border"><%= @two_days_ago_book.count %></td> <!--2日目-->
+              <td class="border"><%= @yesterday_book.count %></td> <!--1日目-->
+              <td class="border"><%= @today_book.count %></td> <!--今日-->
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      <!--テスト-->
+      <div class="text-center">７日間の投稿数の比較</div>
+      <canvas id="myChart"></canvas>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <script>
+      var ctx = document.getElementById('myChart');
+      var myChart = new Chart(ctx, {
+          type: 'line',
+          data: {
+              labels: ['6日前', '５日前', '４日前', '３日前', '２日前', '1日前', '今日'],
+              datasets: [{
+                
+                  label: '投稿数',
+                  data: [<%= @six_days_ago_book.count %>,<%= @five_days_ago_book.count %>, <%= @four_days_ago_book.count %>, <%= @three_days_ago_book.count %>, <%= @two_days_ago_book.count %>, <%= @yesterday_book.count %>, <%= @today_book.count %>,],
+                  backgroundColor: [
+                      'rgba(255, 159, 64, 0.2)'
+                  ],
+                  borderColor: [
+                      'rgba(255, 159, 64, 1)'
+                  ],
+                  borderWidth: 1
+              }]
+          },
+          options: {
+              scales: {
+                  y: {
+                      beginAtZero: true
+                      
+                  }
+              }
+          }
+      });
+      </script>
     </div>
   </div>
 </div>
