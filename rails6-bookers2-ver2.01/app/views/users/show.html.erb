@@ -23,7 +23,7 @@
           </thead>
           <tbody class="border">
             <tr>
-              <td class="border"><%= current_user.books.where('created_at > ?', Date.today).count %></td>
+              <td class="border"><%= @user.books.where('created_at > ?', Date.today).count %></td>
               <td class="border"><%= @yesterday_book.count %></td>
               <td class="border"><%= @comparison.to_f %>%</td>
             </tr>
