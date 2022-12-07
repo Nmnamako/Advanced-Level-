@@ -85,23 +85,24 @@
           data: {
               labels: ['6日前', '５日前', '４日前', '３日前', '２日前', '1日前', '今日'],
               datasets: [{
-                
+                  tension: 0.3,
                   label: '投稿数',
                   data: [<%= @six_days_ago_book.count %>,<%= @five_days_ago_book.count %>, <%= @four_days_ago_book.count %>, <%= @three_days_ago_book.count %>, <%= @two_days_ago_book.count %>, <%= @yesterday_book.count %>, <%= @today_book.count %>,],
                   backgroundColor: [
-                      'rgba(255, 159, 64, 0.2)'
+                      'white'
                   ],
                   borderColor: [
-                      'rgba(255, 159, 64, 1)'
+                      'blue'
                   ],
-                  borderWidth: 1
+                  borderWidth: 3
               }]
           },
           options: {
               scales: {
                   y: {
-                      beginAtZero: true
-                      
+                      beginAtZero: true,
+                      suggestedMin: 1,
+                      suggestedMax: 10
                   }
               }
           }
